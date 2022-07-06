@@ -1,0 +1,17 @@
+{
+  "languageserver": {
+		"go": {
+			"command": "gopls",
+			"args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
+			"rootPatterns": ["go.mod"],
+			"trace.server": "verbose",
+			"filetypes": [ "go" ],
+			"lintTool": "golangci-lint",
+			"lintFlags": ["--fast"],
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			}
+		}
+	}
+}
