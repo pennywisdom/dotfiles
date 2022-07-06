@@ -20,6 +20,7 @@ set smarttab
 set softtabstop=4
 set mouse=a
 set clipboard^=unnamed,unnamedplus
+set shell=/usr/bin/zsh
 " set wildmenu
 " set autochdir
 
