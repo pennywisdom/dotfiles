@@ -108,41 +108,6 @@ module.exports = {
 };
 EOF
 
-sudo tee "$HOME/.gitconfig" > /dev/null <<EOF
-[alias]
-        br = branch
-        st = status -s -b
-        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -20
-        ac = !git add -A && git commit -m 
-        cacs = !git add -A && git cz -s -S
-        oops = !git add -A && git commit --amend --no-edit
-        fpr = !git checkout main && git fetch && git pull --rebase
-        crr = !git rebase -i --root --gpg-sign=noreply@gmail.com
-        unstash = stash pop
-        bd = branch -D
-        ch = checkout
-        chb = checkout -b
-        cht = checkout -t 
-  
-        current = rev-parse --abbrev-ref HEAD
-        pto = !CURRENT=$(git current) && git push origin $CURRENT
-        ptofl = !CURRENT=$(git current) && git push --force-with-lease origin $CURRENT
-        pfo = !CURRENT=$(git current) && git pull origin $CURRENT
-        rh = "!f() { \
-        git reset --hard HEAD~$1; \
-        }; f"
-        rs = "!f() { \
-        git reset --soft HEAD~$1; \
-        }; f"
-        rsh = "!f() { \
-        git reset --soft $1; \
-        }; f"
-        rhh = "!f() { \
-        git reset --hard $1; \
-        }; f"
-        rhH = !git add -A && reset --hard HEAD
-EOF
-
 echo "Configure oh my zsh"
 # find and replace plugins
 # plugins=(docker git github golang gpg-agent jfrog keychain ssh-agent timewarrior zsh-autosuggestions zsh-syntax-highlighting)
