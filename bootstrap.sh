@@ -123,6 +123,9 @@ sed -i 's/plugins=(git)/plugins=(git docker github golang jfrog zsh-autosuggesti
 # zsh
 # omz update > /dev/null
 
+# set zsh as default 
+chsh -s $(which zsh)
+
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
