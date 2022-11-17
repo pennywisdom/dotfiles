@@ -44,7 +44,8 @@ sudo tee "$REPOROOT/.cz-config.js" > /dev/null <<EOF
 module.exports = {
   types: [
     { value: 'feat', name: 'feat:     A new feature' },
-    { value: 'fix', name: 'fix:      A bug fix' },
+    { value: 'fix', name: 'fix: h as default 
+chsh -s $(which zsh)     A bug fix' },
     { value: 'docs', name: 'docs:     Documentation only changes' },
     {
       value: 'style',
@@ -122,9 +123,6 @@ fi
 sed -i 's/plugins=(git)/plugins=(git docker github golang jfrog zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 # zsh
 # omz update > /dev/null
-
-# set zsh as default 
-chsh -s $(which zsh)
 
 echo ""
 echo "***************************************"
