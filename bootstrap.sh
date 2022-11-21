@@ -6,11 +6,12 @@ echo "Initialize Codespaces"
 echo "***************************************"
 echo ""
 
-sudo apt-get install fonts-powerline
-
 REPOROOT=$( cd -- "$(dirname $( dirname -- "${BASH_SOURCE[0]}" ))" &> /dev/null && pwd )
 
 if [ ! -d "$HOME/update-golang" ]; then
+    echo "Verify update-golang"
+    wget -qO hash.txt https://raw.githubusercontent.com/udhos/update-golang/master/update-golang.sh.sha256
+    sha256sum -c hash.txt
     echo "$HOME/update-golang does not exist, creating..."
     pushd ~/
     git clone https://github.com/udhos/update-golang
@@ -18,6 +19,9 @@ if [ ! -d "$HOME/update-golang" ]; then
     sudo ./update-golang.sh > /tmp/update-golang.log
     popd
 fi
+
+echo "Install fonts-powerline"
+sudo apt-get install fonts-powerline
 
 echo "Update pip"
 python3 -m pip install --upgrade pip
@@ -30,9 +34,6 @@ npm --version
 echo "Install latest AWS CDK"
 sudo npm install -g --force cdk@latest
 cdk --version
-
-pip3 install --user policy_sentry
-echo 'eval "$(_POLICY_SENTRY_COMPLETE=source_zsh policy_sentry)"' >> ~/.zshrc
 
 echo "Install commitizen"
 sudo npm install -g commitizen@latest
