@@ -9,6 +9,10 @@ if [ ! -d "$HOME/update-golang" ]; then
     echo "Verify update-golang"
     wget -qO hash.txt https://raw.githubusercontent.com/udhos/update-golang/master/update-golang.sh.sha256
     sha256sum -c hash.txt
+    if [[ $? != 0 ]]; then
+        echo "update-golang.sh hash mismatch, exiting"
+        exit $?
+    fi
     sudo ./update-golang.sh
     popd
 fi
