@@ -2,13 +2,13 @@
 #set -e
 
 if [ ! -d "$HOME/update-golang" ]; then
-    echo "Verify update-golang"
-    wget -qO hash.txt https://raw.githubusercontent.com/udhos/update-golang/master/update-golang.sh.sha256
-    sha256sum -c hash.txt
     echo "$HOME/update-golang does not exist, creating..."
     pushd ~/
     git clone https://github.com/udhos/update-golang
     cd update-golang
+    echo "Verify update-golang"
+    wget -qO hash.txt https://raw.githubusercontent.com/udhos/update-golang/master/update-golang.sh.sha256
+    sha256sum -c hash.txt
     sudo ./update-golang.sh
     popd
 fi
