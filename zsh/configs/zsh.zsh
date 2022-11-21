@@ -53,7 +53,31 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git github golang gpg-agent jfrog keychain ssh-agent timewarrior zsh-autosuggestions zsh-syntax-highlighting)
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
+
+plugins=(aws
+docker
+git
+github
+golang
+timewarrior
+zsh-autosuggestions
+zsh-syntax-highlighting
+colorize
+copydir
+copyfile
+history
+jsontools
+ubuntu
+urltools
+vscode
+web-search)
 
 source $ZSH/oh-my-zsh.sh
 
