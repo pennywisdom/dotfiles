@@ -111,21 +111,6 @@ chsh -s $(which zsh)     A bug fix' },
 };
 EOF
 
-echo "Configure oh my zsh"
-# find and replace plugins
-# plugins=(docker git github golang gpg-agent jfrog keychain ssh-agent timewarrior zsh-autosuggestions zsh-syntax-highlighting)
-if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-fi
-
-if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-fi
-
-# sed -i 's/plugins=(git)/plugins=(git docker github golang jfrog zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-# zsh
-# omz update > /dev/null
-
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
