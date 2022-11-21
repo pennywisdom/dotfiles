@@ -75,12 +75,11 @@ plugins=(
     docker
     git
     github
-    golang
-    timewarrior
+    golang    
     zsh-autosuggestions
     zsh-syntax-highlighting
     colorize
-    copydir
+    copypath
     copyfile
     history
     jsontools
