@@ -26,10 +26,12 @@ sudo apt-get install fonts-powerline
 echo "Update pip"
 python3 -m pip install --upgrade pip
 
+echo "Install policy_sentry"
+pip3 install --user policy_sentry
+
 echo "Update npm..."
 sudo npm install -g --force npm@latest
 npm --version
-
 
 echo "Install latest AWS CDK"
 sudo npm install -g --force cdk@latest
