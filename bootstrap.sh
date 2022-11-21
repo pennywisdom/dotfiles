@@ -6,6 +6,8 @@ echo "Initialize Codespaces"
 echo "***************************************"
 echo ""
 
+sudo apt-get install fonts-powerline
+
 REPOROOT=$( cd -- "$(dirname $( dirname -- "${BASH_SOURCE[0]}" ))" &> /dev/null && pwd )
 
 if [ ! -d "$HOME/update-golang" ]; then
@@ -120,7 +122,7 @@ if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ]; 
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
-sed -i 's/plugins=(git)/plugins=(git docker github golang jfrog zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+# sed -i 's/plugins=(git)/plugins=(git docker github golang jfrog zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 # zsh
 # omz update > /dev/null
 
