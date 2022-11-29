@@ -38,10 +38,11 @@ linters-settings:
         AUTHOREMAIL: .*@users\.noreply\.github\.com
         PACKAGE: .*
         AUTHOR: \w+
-    template: |
+    template: |-
       {{ PACKAGE }}
       Copyright {{YEAR-RANGE}} {{ ME }}. All rights reserved.
-      Original author {{ AUTHOR }} ({{ AUTHOREMAIL }})
+      Original author {{ AUTHOR }} ({{ AUTHOREMAIL }}).
+      
   gosec:
     config:
       G306: "0o644"
