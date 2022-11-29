@@ -1,0 +1,138 @@
+
+    "workbench.iconTheme": "material-icon-theme",
+    "redhat.telemetry.enabled": false,
+    "workbench.sideBar.location": "right",
+    "editor.fontSize": 24,
+    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": false
+    },
+    "editor.inlineSuggest.enabled": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "terminal.integrated.fontFamily": "Cascadia Code, \"MesloLGS NF\", PowerlineSymbols",
+    "github.codespaces.createCodespaceInNewWindow": true,
+    "github.codespaces.showPerformanceExplorer": true,
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "yaml.validate": false,
+    "json.schemas": [],
+    "aws.telemetry": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "git.enableCommitSigning": true,
+    "editor.foldingMaximumRegions": 65000,
+    "gopls": {
+
+        "formatting.gofumpt": true,
+        "build.buildFlags": [
+            "-tags=mage",
+            "-tags=bootstrap",
+            "-tags=linux",
+            "-tags=windows"
+        ],
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast",
+        "--print-issued-lines=true"
+    ],
+    "psi-header.config": {
+		"forceToTop": true,
+		"blankLinesAfter": 1,
+		"spacesBetweenYears": false,
+		"author": "pennywisdom",
+		"company": "pennywisdom",
+		"copyrightHolder": "pennywisdom",
+		"creationDateZero": "asIs"
+	},
+    "psi-header.variables": [
+		["authoremail", "pennywisdom@users.noreply.github.com"]
+	],
+    "psi-header.lang-config": [
+		{
+			"language": "go",
+			"begin": "",
+			"prefix": "// ",
+			"suffix": "",
+			"lineLength": 80,
+			"end": "",
+			"forceToTop": true,
+			"blankLinesAfter": 1,
+			"beforeHeader": [],
+			"afterHeader": [],
+			"rootDirFileName": "main.go",			
+		},
+    ],
+    "psi-header.templates": [
+        {
+            "language": "go",
+            "template": [
+                "<<projectname>>",
+                "Copyright <<yeartoyear(2022,now)>> <<copyrightHolder>>. All rights reserved.",                
+                "Original author <<author>> (<<authoremail>>).",
+            ]
+        }
+    ],
+    "react-native.packager.port": 19000,
+    
+    "go.testOnSave": true,
+    "go.testExplorer.enable": true,
+    "go.testEnvVars": {
+        "CDK_DEFAULT_ACCOUNT": "012345678910",
+        "CDK_DEFAULT_REGION": "eu-west-2",
+    },
+    "terminal.integrated.fontSize":22,
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#5e5f5e",
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "editor.suggest.showMethods": true,
+    "editor.suggest.preview": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.snippetSuggestions": "top",
+    "window.zoomLevel": 1,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "editor.largeFileOptimizations": false,
+    "go.coverOnSave": true,
+    "go.coverageDecorator": {
+        "coveredGutterStyle": "blockgreen",
+        "uncoveredGutterStyle": "blockred"
+    },
+    "go.coverOnSingleTest": true,
+    "go.coverOnSingleTestFile": true,
+    "go.coverShowCounts": true,
+    "vscode-neovim.revealCursorScrollLine": true,
+    "workbench.colorTheme": "GitHub Dark"
+    
+}
