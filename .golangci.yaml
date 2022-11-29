@@ -1,0 +1,107 @@
+# The sections in this file are ordered in the order presented in https://golangci-lint.run/usage/configuration/.
+# The nested fields are ordered alphabetically.
+output:
+  # Format: colored-line-number|line-number|json|tab|checkstyle|code-climate|junit-xml|github-actions
+  #
+  # Multiple can be specified by separating them by comma, output can be provided
+  # for each of them by separating format name and path by colon symbol.
+  # Output path can be either `stdout`, `stderr` or path to the file to write to.
+  # Example: "checkstyle:report.json,colored-line-number"
+  #
+  # Default: colored-line-number
+  format: tab
+
+linters-settings:
+  godot:
+    # Comments to be checked: `declarations`, `toplevel`, or `all`.
+    # Default: declarations
+    scope: all
+    # List of regexps for excluding particular comment lines from check.
+    exclude:
+      # Exclude todo and fixme comments.
+      - "^fixme:"
+      - "^todo:"
+    # Check that each sentence ends with a period.
+    # Default: true
+    period: false
+    # Check that each sentence starts with a capital letter.
+    # Default: false
+    capital: true
+  gofumpt:
+    lang-version: '1.19'
+    extra-rules: true
+  goheader:
+    values:
+      const:
+        ME: pennywisdom
+      regexp:
+        AUTHOREMAIL: .*@users\.noreply\.github\.com
+        PACKAGE: Package .*
+        AUTHOR: \w+
+    template: |
+      {{ PACKAGE }}
+      Copyright {{YEAR-RANGE}} {{ ME }}. All rights reserved.
+      Original author {{ AUTHOR }} ({{ AUTHOREMAIL }})
+  gosec:
+    config:
+      G306: "0o644"
+  lll:
+    # 145 is just a lax value that does not require too much work to add this check,
+    # and we don't want this to be too strict anyway.
+    line-length: 145
+    tab-width: 4
+  makezero:
+    always: true
+  misspell:
+    # Correct spellings using locale preferences for US or UK.
+    # Setting locale to US will correct the British spelling of 'colour' to 'color'.
+    # Default is to use a neutral variety of English.
+    locale: UK    
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+  stylecheck:
+    # ST1003 is left out because it is a bit opinionated.
+    checks: ["all", "-ST1003"]
+linters:
+  enable:
+    - errname
+    - errorlint
+    - exportloopref
+    - forcetypeassert
+    - gocritic
+    - godot
+    - gofumpt
+    - goheader
+    - goimports
+    - gosec
+    - lll
+    - makezero
+    - misspell
+    - nilerr
+    - nilnil
+    - nolintlint
+    - nosprintfhostport
+    - paralleltest
+    - predeclared
+    - reassign
+    - revive
+    - testableexamples
+    - unconvert
+    - unparam
+    - usestdlibvars
+    # TODO: Enable wastedassign after https://github.com/sanposhiho/wastedassign/issues/41 is fixed.
+    # - wastedassign
+    - whitespace
+    - stylecheck
+issues:
+  exclude-rules:
+    - linters:
+        - lll
+      # A go:generate statement has to be in the same line: https://github.com/golang/go/issues/46050.
+      source: "^//go:generate "
+  # Some checks enabled in the stylecheck setting are disabled by default
+  # (e.g., https://golangci-lint.run/usage/false-positives/#exc0013),
+  # so we need to enable them explicitly here.
+  exclude-use-default: false
+  fix: true
