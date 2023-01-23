@@ -41,6 +41,7 @@
   git reset --hard $1; \
   }; f"
   rhH = !git add -A && reset --hard HEAD
+  rank = shortlog -s -n --no-merges
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
