@@ -110,3 +110,8 @@ export EDITOR=$VISUAL
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add Zoxide (for cd, quick jump) to shell
+if hash zoxide 2> /dev/null; then
+    eval "$(zoxide init zsh)"
+fi
