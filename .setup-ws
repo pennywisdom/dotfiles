@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+#set -e
+
+# Set variables for reference
+PARAMS=$* # User-specified parameters
+CURRENT_DIR=$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)
+SYSTEM_TYPE=$(uname -s) # Get system type - Linux / MacOS (Darwin)
+PROMPT_TIMEOUT=15 # When user is prompted for input, skip after x seconds
+START_TIME=`date +%s` # Start timer
+SRC_DIR=$(dirname ${0})
+
+# Color Variables
+CYAN_B='\033[1;96m'
+YELLOW_B='\033[1;93m'
+RED_B='\033[1;31m'
+GREEN_B='\033[1;32m'
+PLAIN_B='\033[1;37m'
+RESET='\033[0m'
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+
+# Checks if a given package is installed
+command_exists () {
+  hash "$1" 2> /dev/null
+}
+
+# Checks if command / package (in $1) exists and then shows
+# either shows a warning or error, depending if package required ($2)
+system_verify () {
+  if ! command_exists $1; then
+    if $2; then
+      echo -e "🚫 ${RED_B}Error:${PLAIN_B} $1 is not installed${RESET}"
+      terminate
+    else
+      echo -e "⚠️  ${YELLOW_B}Warning:${PLAIN_B} $1 is not installed${RESET}"
+    fi
+  fi
+}
+
+echo "***************************************"
+echo "Initialize Workspace"
+echo "***************************************"
+echo ""
+
+# Verify required packages are installed
+system_verify "git" true
+system_verify "zsh" false
+system_verify "vim" false
+system_verify "nvim" false
+# system_verify "tmux" false
+
+echo "install zoxide"
+sudo apt install zoxide
+
+echo "Update pip"
+python3 -m pip install --upgrade pip
+
+echo "Install policy_sentry"
+pip3 install --user policy_sentry
+echo 'eval "$(_POLICY_SENTRY_COMPLETE=source_zsh policy_sentry)"' >> ~/.zshrc
+
+echo "Update npm..."
+sudo npm install -g --force npm@latest
+npm --version
+
+echo "Install latest AWS CDK"
+sudo npm install -g --force cdk@latest
+cdk --version
+
+echo "Install commitizen"
+sudo npm install -g commitizen@latest
+echo "Install cz-customizable"
+sudo npm install -g cz-customizable
+echo "Configure cz-customizable"
+echo '{ "path": "cz-customizable" }' > ~/.czrc
+
+echo "Create ~/.cz-config.js"
+sudo tee "~/.cz-config.js" > /dev/null <<EOF
+module.exports = {
+  types: [
+    { value: 'feat', name: 'feat:     A new feature' },
+    { value: 'fix', name: 'fix:     A bug fix' },
+    { value: 'docs', name: 'docs:     Documentation only changes' },
+    {
+      value: 'style',
+      name:
+        'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+    },
+    {
+      value: 'refactor',
+      name: 'refactor: A code change that neither fixes a bug nor adds a feature',
+    },
+    {
+      value: 'perf',
+      name: 'perf:     A code change that improves performance',
+    },
+    { value: 'test', name: 'test:     Adding missing tests' },
+    {
+      value: 'chore',
+      name:
+        'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
+    },
+    { value: 'revert', name: 'revert:   Revert to a commit' },
+    { value: 'WIP', name: 'WIP:      Work in progress' },
+  ],
+  scopes: [{ name: 'codespaces' }],
+  allowTicketNumber: false,
+  isTicketNumberRequired: false,
+  ticketNumberPrefix: 'TICKET-',
+  ticketNumberRegExp: '\\d{1,5}',
+  // it needs to match the value for field type. Eg.: 'fix'
+  /*
+  scopeOverrides: {
+    fix: [
+      {name: 'merge'},
+      {name: 'style'},
+      {name: 'e2eTest'},
+      {name: 'unitTest'}
+    ]
+  },
+  */
+  // override the messages, defaults are as follows
+  messages: {
+    type: "Select the type of change that you're committing:",
+    scope: '\nDenote the SCOPE of this change (optional):',
+    // used if allowCustomScopes is true
+    customScope: 'Denote the SCOPE of this change:',
+    subject: 'Write a SHORT, IMPERATIVE tense description of the change:\n',
+    body: 'Provide a LONGER description of the change (optional). Use "|" to break new line:\n',
+    breaking: 'List any BREAKING CHANGES (optional):\n',
+    footer: 'List any ISSUES CLOSED by this change (optional). E.g.: #31, #34:\n',
+    confirmCommit: 'Are you sure you want to proceed with the commit above?',
+  },
+  allowCustomScopes: true,
+  allowBreakingChanges: ['feat', 'fix'],
+  // skip any questions you want
+  skipQuestions: ['body'],
+  // limit subject length
+  subjectLimit: 100,
+  // breaklineChar: '|', // It is supported for fields body and footer.
+  // footerPrefix : 'ISSUES CLOSED:'
+  // askForBreakingChangeFirst : true, // default is false
+};
+EOF
+
+echo ""
+echo "***************************************"
+echo "Codespaces initialization done"
+echo "***************************************"
+echo ""
