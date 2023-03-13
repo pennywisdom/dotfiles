@@ -113,6 +113,9 @@ sudo apt install bat
 echo "symlink due to name clash (batcat -> bat)"
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 
+echo "install fzf (better find)"
+sudo apt install fzf
+
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
