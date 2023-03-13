@@ -7,7 +7,7 @@ echo "***************************************"
 echo ""
 
 echo "install zoxide"
-sudo apt install zoxide
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 REPOROOT=$( cd -- "$(dirname $( dirname -- "${BASH_SOURCE[0]}" ))" &> /dev/null && pwd )
 
