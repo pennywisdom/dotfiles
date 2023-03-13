@@ -6,6 +6,9 @@ echo "Initialize Codespaces"
 echo "***************************************"
 echo ""
 
+echo "install zoxide"
+sudo apt install zoxide
+
 REPOROOT=$( cd -- "$(dirname $( dirname -- "${BASH_SOURCE[0]}" ))" &> /dev/null && pwd )
 
 echo "Update pip"
