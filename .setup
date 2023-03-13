@@ -102,6 +102,9 @@ module.exports = {
 };
 EOF
 
+echo "install tldr (better man)"
+sudo npm install -g tldr
+
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
