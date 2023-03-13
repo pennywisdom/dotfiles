@@ -11,7 +11,7 @@
       ]
     }
   },
-  "postCreateCommand": ". ~/.setup-cs-env",
+  "postCreateCommand": ". ~/.setup",
   "features": {
     "ghcr.io/devcontainers/features/go:1": {
       "golangciLintVersion": "latest"
