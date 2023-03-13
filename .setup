@@ -106,7 +106,27 @@ echo "install tldr (better man)"
 sudo npm install -g tldr
 
 echo "install exa (better than ls)"
-sudo apt install exa
+pushd /tmp/
+exaversion='v0.10.1'
+
+# Till the date of publication of this script, the latest available download version is the 0.10.1
+sudo wget -c https://github.com/ogham/exa/releases/download/$exaversion/exa-linux-x86_64-$exaversion.zip
+
+sudo unzip exa-linux-x86_64-$exaversion.zip -d ./exa-linux-x86_64-$exaversion
+ls -lasth
+
+# Move the unziped binary with the name "exa-linux-x86_64" to "/usr/local/bin/" with the exa name
+if [ $(id -u) -eq 0 ]; then
+  mv exa-linux-x86_64-$exaversion/bin/exa /usr/local/bin/exa
+else
+  echo "move binary to bin dir and symlink"
+  sudo mv ./exa-linux-x86_64-$exaversion/bin/exa /usr/local/bin/exa
+  sudo chmod +x /usr/local/bin/exa
+fi
+# Delete downloaded archive
+sudo rm exa-linux-x86_64-$exaversion.zip
+echo "done installing exa"
+popd
 
 echo "install bat (better cat)"
 sudo apt install bat
