@@ -108,6 +108,11 @@ sudo npm install -g tldr
 echo "install exa (better than ls)"
 sudo apt install exa
 
+echo "install bat (better cat)"
+sudo apt install bat
+echo "symlink due to name clash (batcat -> bat)"
+sudo ln -s /usr/bin/batcat /usr/local/bin/bat
+
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
