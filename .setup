@@ -105,6 +105,9 @@ EOF
 echo "install tldr (better man)"
 sudo npm install -g tldr
 
+echo "install exa (better than ls)"
+sudo apt install exa
+
 echo ""
 echo "***************************************"
 echo "Codespaces initialization done"
