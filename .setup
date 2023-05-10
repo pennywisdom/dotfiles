@@ -6,6 +6,9 @@ echo "Initialize Codespaces"
 echo "***************************************"
 echo ""
 
+echo "set nvm to use lts"
+nvm use --lts
+
 echo "install zoxide"
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
@@ -129,7 +132,7 @@ echo "done installing exa"
 popd
 
 echo "install bat (better cat)"
-sudo apt install bat
+sudo apt install -y bat
 echo "symlink due to name clash (batcat -> bat)"
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 
