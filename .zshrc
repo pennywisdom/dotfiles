@@ -102,6 +102,9 @@ export LANG=en_GB.UTF-8
 export VISUAL=nvim
 export EDITOR=$VISUAL
 
+echo "Use latest lts verison of nodejs"
+nvm use --lts
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
