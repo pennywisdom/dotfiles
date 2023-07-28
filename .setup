@@ -65,7 +65,8 @@ module.exports = {
     { value: 'revert', name: 'revert:   Revert to a commit' },
     { value: 'WIP', name: 'WIP:      Work in progress' },
   ],
-  scopes: [{ name: 'codespaces' }],
+  // scopes: [{ name: 'codespaces' }],
+  scopes: [],
   allowTicketNumber: false,
   isTicketNumberRequired: false,
   ticketNumberPrefix: 'TICKET-',
@@ -96,9 +97,9 @@ module.exports = {
   allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
-  skipQuestions: ['body'],
+  // skipQuestions: ['body'],
   // limit subject length
-  subjectLimit: 100,
+  subjectLimit: 72,
   // breaklineChar: '|', // It is supported for fields body and footer.
   // footerPrefix : 'ISSUES CLOSED:'
   // askForBreakingChangeFirst : true, // default is false
