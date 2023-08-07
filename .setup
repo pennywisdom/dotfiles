@@ -149,12 +149,13 @@ echo "install fzf (better find)"
 sudo apt install fzf
 
 echo "install neovim from GitHub"
-cd $(mktemp -d)
+pushd $(mktemp -d)
 NVIM_VERSION=v0.9.1
 curl -sSLO https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux64.tar.gz
 tar xzvf nvim-linux64.tar.gz
 sudo mv nvim-linux64/bin/nvim /usr/bin/nvim
 nvim --version
+popd
 
 echo ""
 echo "***************************************"
