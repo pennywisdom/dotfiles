@@ -98,6 +98,9 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8
+export LANGUATE=en_GB.UTF-8
+export LC_CTYPE=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
 
 export VISUAL=nvim
 export EDITOR=$VISUAL
